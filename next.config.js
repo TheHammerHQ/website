@@ -8,7 +8,7 @@ const nextConfig = {
 	poweredByHeader: false,
 	trailingSlash: true,
 	i18n: {
-		locales: ["en"],
+		locales: ["en", "tr"],
 		defaultLocale: "en",
 	},
 	async redirects() {

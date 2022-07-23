@@ -54,6 +54,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 				<meta property="og:image" content={Favicon.src} />
 				<meta property="og:locale" content="en_US" />
 				<meta property="og:locale:alternate" content="en_GB" />
+				<meta property="og:locale:alternate" content="tr_TR" />
 				<meta
 					property="twitter:url"
 					content={CONFIG.SEO.publishDomain}
