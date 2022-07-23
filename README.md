@@ -26,6 +26,6 @@ Give a ⭐️ if this project helped you!
 
 # 📞 Contact
 
--   Mail: demirci.baris38@gmail.com
--   Discord: https://discord.gg/BjEJFwh
--   Webpage: https://338.rocks
+-   Mail: hammer@338.rocks
+-   Discord: https://discord.gg/pwxYGg5PZm
+-   Website: https://hammer.338.rocks
