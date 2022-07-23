@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 
 import en from "@locales/en.yaml";
+import tr from "@locales/tr.yaml";
 import constants from "@locales/constants.yaml";
 import { CONFIG } from "./config";
 
@@ -8,7 +9,7 @@ export interface ITokens {
 	[key: string]: string;
 }
 
-const locales: { [key: string]: any } = { en };
+const locales: { [key: string]: any } = { en, tr };
 const tokens: ITokens = {
 	blue: "<span class='text-blue-500'>",
 };

@@ -2,3 +2,8 @@ coming_soon: Hammer Bot, Coming Soon™
 join_waitlist: Join waitlist, get an e-mail when bot is ready!
 email: Email
 join_button: Join Waitlist
+enter_mail: Please enter your e-mail address.
+internal_server_error: An error occured while joining waitlist, please try again later.
+mail_missing: You need to specify an e-mail address.
+mail_already_used: Thi e-mail is already saved in our servers.
+joined: You have joined the waitlist, thanks!

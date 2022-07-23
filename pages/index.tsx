@@ -1,4 +1,4 @@
-import type { FormEvent } from "react";
+import { type FormEvent, type ChangeEvent, useState } from "react";
 import type { NextPage } from "next";
 import { useLocaleParser } from "@libs/localeParser";
 import { Container } from "@components/Container";
@@ -6,13 +6,45 @@ import { Layout } from "@components/Layout";
 import { toast } from "react-toastify";
 import Hammer from "@assets/icon.png";
 import Image from "next/image";
+import axios from "axios";
 
 const Home: NextPage = () => {
 	const parser = useLocaleParser();
+	const [mail, setMail] = useState("");
+	const [loading, setLoading] = useState(false);
 
-	const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+	const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		toast.success("Done!");
+
+		if (loading) return;
+		setLoading(true);
+
+		if (!mail) {
+			toast.error(parser.get("enter_mail"));
+			setLoading(false);
+			return;
+		}
+
+		axios
+			.post("/api/join", { mail })
+			.then((res) => {
+				if (res.data.success) {
+					setMail("");
+					toast.success(parser.get(res.data.message));
+				} else {
+					toast.error(parser.get(res.data.message));
+				}
+			})
+			.catch((err) => {
+				toast.error(parser.get("internal_server_error"));
+			})
+			.finally(() => {
+				setLoading(false);
+			});
+	};
+
+	const onMailChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setMail(e.target.value);
 	};
 
 	return (
@@ -36,9 +68,12 @@ const Home: NextPage = () => {
 					<br />
 					<form onSubmit={onSubmit}>
 						<input
+							onChange={onMailChange}
 							className="mt-5 appearance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-50 focus:bg-white border border-gray-200 focus:border-gray-500 rounded-md focus:outline-none"
-							type="mail"
+							type="email"
+							value={mail}
 							placeholder={parser.get("email")}
+							required
 						/>
 						<button className="font-extrabold w-full rounded-md mt-5 shadow-lg bg-gradient-to-l from-green-400 to-blue-500">
 							{parser.get("join_button")}
